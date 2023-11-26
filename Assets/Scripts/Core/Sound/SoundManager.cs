@@ -9,6 +9,9 @@ public class SoundManager : MonoBehaviour
         On
     }
 
+    private const string VIBRATE = "Vibrate";
+    private const string SOUND = "Sound";
+
     [SerializeField] private Button vibrateSetting;
     [SerializeField] private Button soundSetting;
 
@@ -17,8 +20,8 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        vibrateState = (SoundState)PlayerPrefs.GetInt("Vibrate", 1);
-        soundState = (SoundState)PlayerPrefs.GetInt("Sound", 1);
+        vibrateState = (SoundState)PlayerPrefs.GetInt(VIBRATE, 1);
+        soundState = (SoundState)PlayerPrefs.GetInt(SOUND, 1);
 
         SetButtonColor(vibrateSetting, vibrateState);
         SetButtonColor(soundSetting, soundState);
@@ -27,20 +30,20 @@ public class SoundManager : MonoBehaviour
     public void VibrateSetting()
     {
         vibrateState = (SoundState)(((int)vibrateState + 1) % 2);
-        PlayerPrefs.SetInt("Vibrate", (int)vibrateState);
+        PlayerPrefs.SetInt(VIBRATE, (int)vibrateState);
         SetButtonColor(vibrateSetting, vibrateState);
     }
 
     public void SoundSetting()
     {
         soundState = (SoundState)(((int)soundState + 1) % 2);
-        PlayerPrefs.SetInt("Sound", (int)soundState);
+        PlayerPrefs.SetInt(SOUND, (int)soundState);
         SetButtonColor(soundSetting, soundState);
     }
 
     private void SetButtonColor(Button button, SoundState state)
     {
-        Color32 color = state == SoundState.On ? new Color32(255, 255, 255, 255) : new Color32(103, 103, 103, 255);
+        Color32 color = state == SoundState.On ? Color.white : Color.gray;
         button.image.color = color;
     }
 }
