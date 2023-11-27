@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+    private const string VIBRATE = "Vibrate";
+    private const string SOUND = "Sound";
+
     [Header("Size & Color")]
     [SerializeField] private int startingSize;
     [SerializeField] private Material[] blockColor;
@@ -34,8 +37,8 @@ public class Block : MonoBehaviour
 
     public void CheckHit()
     {
-        int vibrateOn = PlayerPrefs.GetInt("Vibrate");
-        int soundOn = PlayerPrefs.GetInt("Sound");
+        int vibrateOn = PlayerPrefs.GetInt(VIBRATE);
+        int soundOn = PlayerPrefs.GetInt(SOUND);
         if (vibrateOn == 1)
         {
             Handheld.Vibrate();
