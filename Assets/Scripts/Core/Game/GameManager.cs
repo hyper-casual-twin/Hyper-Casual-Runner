@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private const string VIBRATE = "Vibrate";
+    private const string SOUND = "Sound";
+
     private static GameManager instance;
     public static GameManager Instance { get => instance; }
+
     [HideInInspector] public bool gameStarted;
     [HideInInspector] public bool gameWon;
     [HideInInspector] public bool gameLost;
@@ -25,13 +29,13 @@ public class GameManager : MonoBehaviour
 
     private void SettingData()
     {
-        if (!PlayerPrefs.HasKey("Vibrate"))
+        if (!PlayerPrefs.HasKey(VIBRATE))
         {
-            PlayerPrefs.SetInt("Vibrate", 1);
+            PlayerPrefs.SetInt(VIBRATE, 1);
         }
-        if (!PlayerPrefs.HasKey("Sound"))
+        if (!PlayerPrefs.HasKey(SOUND))
         {
-            PlayerPrefs.SetInt("Sound", 1);
+            PlayerPrefs.SetInt(SOUND, 1);
         }
     }
 }
