@@ -39,10 +39,10 @@ public class Block : MonoBehaviour
     {
         int vibrateOn = PlayerPrefs.GetInt(VIBRATE);
         int soundOn = PlayerPrefs.GetInt(SOUND);
-        if (vibrateOn == 1)
-        {
-            Handheld.Vibrate();
-        }
+        //if (vibrateOn == 1)
+        //{
+        //    Handheld.Vibrate();
+        //}
 
         if (GameManager.Instance.playerSize > startingSize)
         {
@@ -52,8 +52,7 @@ public class Block : MonoBehaviour
             brokenBlock.SetActive(true);
             foreach (Transform childTransform in brokenBlock.transform)
             {
-                Renderer childRenderer = childTransform.GetComponent<Renderer>();
-                if (childRenderer != null)
+                if (childTransform.TryGetComponent<Renderer>(out Renderer childRenderer))
                 {
                     childRenderer.material = blockMesh.material;
                 }
