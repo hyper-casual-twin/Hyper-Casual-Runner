@@ -7606,7 +7606,7 @@ GameObject:
   - component: {fileID: 554842569156281502}
   - component: {fileID: 6938668116805547997}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: ProgressSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
